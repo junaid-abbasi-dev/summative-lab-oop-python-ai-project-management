@@ -4,6 +4,7 @@ from services.storage_service import StorageService
 from models.project import Project
 from models.task import Task
 from services.ai_client import OllamaClient
+from utils.formatters import format_user, format_project
 
 parser = argparse.ArgumentParser(description="Project management CLI")
 subparsers = parser.add_subparsers(dest="command")
@@ -50,7 +51,7 @@ if args.command == "list-users":
     data = storage.load()
     for user_data in data["users"]:
         user = User.from_dict(user_data)
-        print(f"{user.name} - {user.email}")
+        print(format_user(user))
 
 if args.command == "add-project":
     storage = StorageService()
@@ -66,7 +67,7 @@ if args.command == "list-projects":
     for project_data in data["projects"]:
         project = Project.from_dict(project_data)
         if project.user == args.user:
-            print(f"{project.title} - {project.description} - due {project.due_date}")
+            print(format_project(project))
 
 if args.command == "add-task":
     storage = StorageService()

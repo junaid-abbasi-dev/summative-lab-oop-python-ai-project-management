@@ -9,3 +9,25 @@ Python 3.11 is required. Ollama must be installed, with the `llama3.2` model ava
 ```bash
 pipenv install
 pipenv shell
+
+```
+
+## Commands
+
+Run these from the project folder:
+
+```bash
+python main.py add-user --name "Alex" --email "alex@example.com"
+python main.py list-users
+python main.py add-project --user "Alex" --title "CLI Tool" --description "Build project tracker" --due-date "2026-12-01"
+python main.py list-projects --user "Alex"
+python main.py add-task --project "CLI Tool" --title "Implement add-task command" --assigned-to "Alex"
+python main.py complete-task --project "CLI Tool" --task "Implement add-task command"
+python main.py summarize-project --project "CLI Tool"
+```
+
+`summarize-project` calls `OllamaClient` in `services/ai_client.py`. That class sends the project and its tasks to the local `llama3.2` model.
+
+## Data
+
+Users, projects, and tasks are saved in `data/project_data.json`.
