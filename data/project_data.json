@@ -5,6 +5,20 @@
       "email": "alex@example.com"
     }
   ],
-  "projects": [],
-  "tasks": []
+  "projects": [
+    {
+      "user": "Alex",
+      "title": "CLI Tool",
+      "description": "Build project tracker",
+      "due_date": "2026-12-01"
+    }
+  ],
+  "tasks": [
+    {
+      "project": "CLI Tool",
+      "title": "Implement add-task command",
+      "status": "complete",
+      "assigned_to": "Alex"
+    }
+  ]
 }
